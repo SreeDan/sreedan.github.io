@@ -1,0 +1,30 @@
+---
+const skills = [
+  { name: "Rust", color: "#CE412B", icon: "🦀" },
+  { name: "Go", color: "#00ACD7", icon: "🔵" },
+  { name: "Python", color: "#3572A5", icon: "🐍" },
+  { name: "C/C++", color: "#555555", icon: "⚙️" },
+  { name: "TypeScript", color: "#3178C6", icon: "TS" },
+  { name: "Java", color: "#B07219", icon: "☕" },
+  { name: "PostgreSQL", color: "#336791", icon: "🐘" },
+  { name: "Linux", color: "#FCC624", icon: "🐧" },
+  { name: "Docker", color: "#2496ED", icon: "🐳" },
+  { name: "Kubernetes", color: "#326CE5", icon: "⎈" },
+  { name: "CAN Bus", color: "#6C47A8", icon: "🔌" },
+  { name: "Embedded C", color: "#888888", icon: "🔧" },
+];
+---
+
+<section id="skills" class="pt-10 pb-24 px-6 bg-[#1a1a1a]">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-4xl md:text-5xl font-bold text-center text-gray-200 mb-14">Skills</h2>
+    <div class="flex flex-wrap justify-center gap-3">
+      {skills.map((skill) => (
+        <div class="flex items-center gap-2.5 bg-[#242424] border border-white/10 rounded-lg px-4 py-2.5 hover:border-indigo-400/40 transition-colors">
+          <span class="text-sm font-medium">{skill.icon}</span>
+          <span class="text-gray-200 font-medium text-sm">{skill.name}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
