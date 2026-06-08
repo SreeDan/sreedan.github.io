@@ -4,65 +4,67 @@ const projects = [
     name: "Mesh Network",
     description: "A decentralized, peer-to-peer mesh networking library in modern C++23. Nodes self-organize into a network and route packets to each other with no central server required.",
     bullets: [
-      "Supports TLS encryption and TCP/UDP communication with heartbeat monitoring and automatic reconnection",
-      "Provides optional end-to-end encryption so intermediate nodes never see plaintext",
+      "Supports TLS encryption and TCP/UDP communication",
+      "Implements peer handshakes, heartbeat monitoring, and automatic reconnection",
+      "Propagates routing tables for self-organizing multi-hop communication",
+      "Provides optional end-to-end encryption",
       "Includes typed Protobuf messaging, request-response APIs, and network-wide broadcasts",
     ],
-    technologies: ["C++", "Boost.asio"],
-    github: "https://github.com/sreekara",
+    technologies: ["C++", "Boost.asio", "OpenSSL", "Protobuf"],
+    github: "https://github.com/sreedan/MeshNetwork",
     live: null,
   },
   {
-    name: "Distributed Task Queue",
-    description: "A lightweight, fault-tolerant distributed task queue built in Go. Supports priority queues, dead-letter handling, and horizontal worker scaling.",
+    name: "Data Acquisition Cloud Webserver",
+    description: "A cloud backend for HyTech Racing's vehicle data acquisition platform. It processes recorded telemetry into searchable runs, analysis-ready datasets, and automatically generated visualizations.",
     bullets: [
-      "Worker pool with configurable concurrency",
-      "PostgreSQL-backed persistent queue",
+      "Dynamically decodes Protobuf messages using schemas embedded in each recording, supporting backwards/forwards compatability for schemas.",
+      "Routes telemetry through concurrent workers to generate HDF5 datasets and plots",
       "Retry logic with exponential backoff",
       "gRPC API for task submission and status polling",
     ],
-    technologies: ["Go", "PostgreSQL", "gRPC", "Docker"],
-    github: "https://github.com/sreekara",
-    live: null,
+    technologies: ["Go", "Protobuf", "mcap", "hdf5", "MongoDB", "Docker"],
+    github: "https://github.com/hytech-racing/data_acq_cloud",
+    live: "https://hytechracing.gatech.edu/",
   },
   {
-    name: "Telemetry Dashboard",
-    description: "Real-time visualization dashboard for racecar sensor data, designed for use in the pit during FSAE competitions.",
+    name: "NeuroBlocks",
+    description: "A visual neural-network playground for designing, validating, and training models from connected blocks. I worked on building the Python backend that turns user-created graphs into executable PyTorch models.",
     bullets: [
-      "WebSocket-driven live data streaming",
-      "Configurable gauge and chart layouts",
-      "Alert system for out-of-range sensor values",
-      "Runs entirely in the browser, no backend required at pit",
+      "Compiles visual layer graphs into dynamic PyTorch models",
+      "Validates graph structure and propagates tensor shapes before training",
+      "Streams live training metrics through FastAPI WebSockets",
+      "Supports local and cloud GPU training with model persistence",
+      "Handles custom dataset uploads, validation, and cloud storage"
     ],
-    technologies: ["TypeScript", "React", "WebSockets"],
-    github: "https://github.com/sreekara",
-    live: null,
+    technologies: ["Python", "FastAPI", "PyTorch", "WebSockets"],
+    github: "https://github.com/tupdaily/NeuroBlocks",
+    live: "https://youtu.be/kGlmRMJCSdg?si=AcgwInCsmjuwsxw6",
   },
   {
-    name: "Shell in Rust",
-    description: "A Unix shell implementation in Rust, built for an OS course project. Supports job control, piping, and redirection.",
+    name: "ESP Spotify Display & Remote",
+    description: "A Wi-Fi-connected Spotify remote built in Rust for an Espressif microcontroller. Physical buttons provide tactile playback controls, while a companion API keeps the device synchronized with the currently playing track.",
     bullets: [
-      "Fork/exec model with proper signal handling",
-      "Background jobs and fg/bg commands",
-      "Pipe chaining and I/O redirection",
-      "Built-in commands: cd, exit, jobs",
+      "Built a server to fetch playback state and send Spotify control commands",
+      "Controls previous track, play/pause, and next track through GPIO buttons",
+      "Added token-authenticated requests to prevent unauthorized playback control",
     ],
-    technologies: ["Rust", "Linux", "Systems"],
-    github: "https://github.com/sreekara",
+    technologies: ["Rust", "ESP-IDF", "Embedded"],
+    github: "https://github.com/SreeDan/esp-spotify",
     live: null,
   },
 ];
 ---
 
-<section id="projects" class="pt-10 pb-24 px-6 bg-[#212121]">
-  <div class="max-w-6xl mx-auto">
+<section id="projects" class="pt-10 pb-24 px-3 bg-[#212121]">
+  <div class="max-w-screen-2xl mx-auto">
     <h2 class="text-4xl md:text-5xl font-bold text-center text-gray-200 mb-14">Projects</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {projects.map((project) => (
-        <div class="bg-[#242424] border border-white/5 rounded-xl p-6 flex flex-col">
+        <div class="bg-[#242424] border border-white/20 rounded-xl p-8 flex flex-col">
           <h3 class="text-2xl font-bold text-white mb-2">{project.name}</h3>
           <p class="text-gray-200 text-lg mb-3 leading-relaxed">{project.description}</p>
-          <ul class="text-gray-200 text-base mb-4 space-y-1 flex-1">
+          <ul class="text-gray-200 text-lg mb-4 space-y-2.5 flex-1">
             {project.bullets.map((b) => (
               <li class="flex gap-2">
                 <span class="text-gray-600 flex-shrink-0">•</span>
@@ -85,7 +87,7 @@ const projects = [
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              class="flex-1 flex items-center justify-center gap-2 border border-white/10 hover:border-white/30 rounded-lg py-2 text-sm text-gray-300 hover:text-white transition-colors"
+              class="flex-1 flex items-center justify-center gap-2 border border-white/40 hover:border-white/70 rounded-lg py-3 text-lg text-gray-300 hover:text-white transition-colors"
             >
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
