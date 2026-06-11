@@ -39,7 +39,20 @@ const projects = [
     ],
     technologies: ["Python", "FastAPI", "PyTorch", "WebSockets"],
     github: "https://github.com/tupdaily/NeuroBlocks",
-    live: "https://youtu.be/kGlmRMJCSdg?si=AcgwInCsmjuwsxw6",
+    live: "https://devpost.com/software/neuroblocks-cz7n9k",
+  },
+  {
+    name: "BikeBuddy",
+    description: "A bicycle safety device with a rear-view camera, wireless turn signals, and a mobile companion app. Won 1st place in the hardware track at HackGT 12.",
+    bullets: [
+      "Configured an ESP32 as a Wi-Fi access point so the camera and controller ESPs communicate without external infrastructure",
+      "Built an HTTP webserver on the ESP32 to serve the live camera feed and handle turn signal commands from the controller",
+      "Streamed real-time video from a rear-mounted camera to the mobile app over the local Wi-Fi network",
+      "Wired and debounced handlebar-mounted input switches that send HTTP requests to trigger left, right, and hazard signals",
+    ],
+    technologies: ["C++", "C", "ESP32", "PlatformIO"],
+    github: "https://github.com/tsar-boomba/BikeBuddy",
+    live: "https://devpost.com/software/bikebuddy",
   },
   {
     name: "ESP Spotify Display & Remote",
